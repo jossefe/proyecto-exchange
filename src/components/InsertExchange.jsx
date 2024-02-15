@@ -86,7 +86,9 @@ const InsertExchange = ({ onAddExchange }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!originCurrency || !destCurrency || !amount) return;
+    if (!originCurrency || !destCurrency || !amount) 
+    
+    return;
 
     const newExchange = {
       id: new Date().getTime(),
@@ -100,12 +102,12 @@ const InsertExchange = ({ onAddExchange }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='currency-exchanger__form 'onSubmit={handleSubmit}>
       <label className='currency-exchanger__form-group select'>
         From:
         <CurrencyComboBox
           currencies={currencies}
-          onSelectCurrency={setOriginCurrency} // Corregido a onSelectCurrency
+          onSelectCurrency={setOriginCurrency} 
         />
       </label>
       <label className='currency-exchanger__form-group select'>

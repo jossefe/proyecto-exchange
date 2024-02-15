@@ -22,7 +22,7 @@ body{
   background-color: #fffee1;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+
 }
 
 .currency-exchanger__form-title {
@@ -44,6 +44,9 @@ body{
   border-radius: 5px;
   border: 1px solid #ffa335;
 }
+.currency-exchanger__exchange-list{
+  width: 50%;
+}
 
 .currency-exchanger__form-group select {
   padding: 3px;
@@ -51,6 +54,13 @@ body{
   border: 1px solid #ffa335;
   margin-bottom: 15px;
   align-items: center;
+}
+.card{
+  background-color: #d3e19d;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .currency-exchanger__form-button {
