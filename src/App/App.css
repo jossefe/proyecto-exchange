@@ -1,5 +1,9 @@
 body{
   background-color: #fffee1;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
 }
 .currency-exchanger {
   display: flex;
@@ -45,7 +49,12 @@ body{
   border: 1px solid #ffa335;
 }
 .currency-exchanger__exchange-list{
-  width: 50%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+
 }
 
 .currency-exchanger__form-group select {
@@ -56,11 +65,20 @@ body{
   align-items: center;
 }
 .card{
+  width: 40%;
   background-color: #d3e19d;
   border-radius: 5px;
   display: flex;
   flex-wrap: wrap;
+  justify-content:center;
+  padding: 35px ;
+  margin: 10px;
+
+}
+.card__content{
+  display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .currency-exchanger__form-button {

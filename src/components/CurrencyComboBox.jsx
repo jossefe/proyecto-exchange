@@ -8,17 +8,17 @@ const CurrencyComboBox = ({ currencies, onSelectCurrency }) => {
     setSelectedCurrency(currency);
     onSelectCurrency(currency);
   };
-
   return (
     <div>
       <select value={selectedCurrency} onChange={handleCurrencyChange}>
         {Object.keys(currencies).map((currencyCode) => (
           <option key={currencyCode} value={currencyCode}>
-            {`${currencies[currencyCode].emoji} ${currencies[currencyCode].name}`}
+            <img src={`/banderas/${currencies[currencyCode].emoji.toLowerCase()}.png`} alt="" /> {currencies[currencyCode].name}
           </option>
         ))}
       </select>
     </div>
   );
+  
 };
 export default CurrencyComboBox;
