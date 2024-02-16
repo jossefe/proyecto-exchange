@@ -82,7 +82,7 @@ const currencies = {
   // Agregar más códigos de moneda según sea necesario
 };
 
-const initialExchanges = [
+const initialExchanges = [//exchages iniciales
   {
     originCurrency: "MXN",
     destCurrency: "USD",
@@ -114,7 +114,8 @@ const App = () => {
       <div className="currency-exchanger__form">
         <div className="currency-exchanger__form-title">
           <img src={logo} alt="" />
-        </div>
+        </div> 
+        {/* llamamos al InsertExchange  para insertar un exchange*/}
         <InsertExchange onAddExchange={addExchange} onSelectCurrency={handleCurrencyChange} />
       </div>
         <div className="currency-exchanger__exchanges-title">
@@ -122,6 +123,7 @@ const App = () => {
         </div>
         <div className="currency-exchanger__exchanges">
         <div className="currency-exchanger__exchange-list">
+          {/* mapeamos los exchanges y creamos un changeCard por cada insert */}
           {exchanges.map((exchange, index) => (
             <ExchangeCard key={index} exchange={exchange} currencies={currencies} />
           ))}

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import CurrencyComboBox from './CurrencyComboBox';
 import arrow from '../img/Vector.png';
+
 const currencies = {
   "USD": {
- "emoji": "us",
+    "emoji": "us",
     "exchangeRate": 1,
     "name": "US Dollar"
   },
@@ -77,63 +78,68 @@ const currencies = {
     "exchangeRate": 20.45,
     "name": "Mexican Peso"
   }
-  // Agregar más códigos de moneda según sea necesario
 };
-
 
 const InsertExchange = ({ onAddExchange }) => {
   const [originCurrency, setOriginCurrency] = useState('USD');
   const [destCurrency, setDestCurrency] = useState('EUR');
   const [amount, setAmount] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!originCurrency || !destCurrency || !amount) 
-
-    return;
-
+    if (!originCurrency || !destCurrency || !amount) { //validamos si han introducido algo en los  inputs
+      setError('Por favor, introduce el cambio que deseas realizar.'); //cargamos el error
+      return;
+    }
+//creamos un exchange nuevo 
     const newExchange = {
       id: new Date().getTime(),
       originCurrency,
       destCurrency,
       amount: parseFloat(amount),
     };
-
+//utilizamos la funcion onAddExchange con el nuevo exchange 
     onAddExchange(newExchange);
-    setAmount('');
+    setAmount(''); //reseteamos la cantidad
+    setError(''); //resteamos el error
   };
 
   return (
-    <form className='currency-exchanger__form 'onSubmit={handleSubmit}>
-       <label className='currency-exchanger__form-group '>
-        <div>Amount:</div>
-        <input 
-          type="number"
-          step="0.01"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
-      </label >
-      <label className='currency-exchanger__form-group select'>
-        Origin Currency:
-        <CurrencyComboBox
-          currencies={currencies}
-          onSelectCurrency={setOriginCurrency} 
-        />
-      </label>
-      <div className='currency-exchanger__form-group--arrow'>
-        <img src={arrow} alt="" />
-      </div>
-      <label className='currency-exchanger__form-group select'>
-        Destination Currency
-        <CurrencyComboBox
-          currencies={currencies}
-          onSelectCurrency={setDestCurrency} 
-        />
-      </label>
-     
-      <button className='currency-exchanger__form-button' type="submit">Add </button>
-    </form>
+    <div>
+      <form className='currency-exchanger__form' onSubmit={handleSubmit}>
+        <label className='currency-exchanger__form-group'>
+          <div>Amount:</div>
+          <input 
+            type="number"
+            step="0.01"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}//recodemos el amount que ponen en input 
+          />
+        </label >
+        <label className='currency-exchanger__form-group select'>
+          Origin Currency:
+          {/* llamamos a currencyComboBox para hacer la seleccion de la moneda de origin */}
+          <CurrencyComboBox
+            currencies={currencies}
+            onSelectCurrency={setOriginCurrency} 
+          />
+        </label>
+        <div className='currency-exchanger__form-group--arrow'>
+          <img src={arrow} alt="" />
+        </div>
+        <label className='currency-exchanger__form-group select'>
+          Destination Currency
+           {/* lo mismo con la de destino */}
+          <CurrencyComboBox
+            currencies={currencies}
+            onSelectCurrency={setDestCurrency} 
+          />
+        </label>
+        <button className='currency-exchanger__form-button' type="submit">Add </button>
+      </form>
+      {error && <div style={{ color: 'red', marginTop: '10px', textAlign: 'center' }}>{error}</div>}{/*mstamos el error con un estilo sencillo */}
+    </div>
   );
 };
 

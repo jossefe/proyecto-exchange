@@ -12,7 +12,7 @@ const ExchangeCard = ({ exchange, currencies }) => {
   const destCurrencyValue = currencies[destCurrency].exchangeRate;
 
   const calculateExchange = () => {
-    // Calculamos el tipo de cambio , convirtiendo de una moneda a otra
+    // Calculamos el tipo de cambio convertiendo de una moneda a otra
     const exchangeRate = destCurrencyValue / originCurrencyValue;
     return (amount * exchangeRate).toFixed(2);
   };
@@ -24,20 +24,22 @@ const ExchangeCard = ({ exchange, currencies }) => {
   };
 
   return (
-    <div className="card" style={{ display: deleted ? 'none' : 'block' }}>
+
+    <div className="card" style={{ display: deleted ? 'none' : 'block' }}>{/*comprabamos si se a eliminado para borar el card  */}
+      
       <div className="card__content">
         <div>
           <img src={originFlagImg} alt="Origin Flag" /> <br />
-          {`${originCurrency} ${amount}`}
+          {`${originCurrency} ${amount}`} {/* ponemos la cantidad cogiedola del amount directamente */}
         </div>
         <div>
           <img src={flecha} alt="Arrow" />
         </div>
         <div>
           <img src={destFlagImg} alt="Destination Flag" /> <br />
-          {`${destCurrency} ${calculateExchange()}`}
+          {`${destCurrency} ${calculateExchange()}`}{/* utilizamos el cambio que hemos hecho antes*/}
         </div>
-        <img src={eliminar} alt="Delete" className="delete-icon" onClick={handleDeleteCard} />
+        <img src={eliminar} alt="Delete" className="delete-icon" onClick={handleDeleteCard} />{/* imagen que utilizamos para eliminar el card */}
       </div>
     </div>
   );
