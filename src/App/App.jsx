@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import InsertExchange from '../components/InsertExchange';
 import ExchangeCard from '../components/ExchangeCard';
 import './App.css';
+import logo from '../img/ep_money.png';
 const currencies = {
   "USD": {
  "emoji": "us",
@@ -103,17 +104,16 @@ const App = () => {
 
   const handleCurrencyChange = (currency) => {
     // Aquí puedes agregar lógica para manejar el cambio de moneda
-    console.log(`Selected currency: ${currency}`);
   };
 
   return (
     <div >
       <div className="currency-exchanger__header">
-        <h1>Currency Exchange App</h1>
+        <h1>Currency Exchange </h1>
       </div>
       <div className="currency-exchanger__form">
         <div className="currency-exchanger__form-title">
-          <h2>Add Exchange</h2>
+          <img src={logo} alt="" />
         </div>
         <InsertExchange onAddExchange={addExchange} onSelectCurrency={handleCurrencyChange} />
       </div>
